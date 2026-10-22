@@ -1,0 +1,10 @@
+__pycache__/
+.venv/
+.pytest_cache/
+*.py[cod]
+cache/
+indexes/
+models/
+data/corpus/
+results/raw/
+results/*.tmp

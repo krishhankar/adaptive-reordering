@@ -1,0 +1,45 @@
+seed: 42
+paths:
+  cache: cache
+  retrieval_cache: cache/retrieval
+  indexes: indexes
+  results: results
+  raw_results: results/raw
+  corpus: data/corpus/psgs_w100.tsv
+  e5_index: indexes/e5
+  bm25_index: wikipedia-dpr-100w
+datasets:
+  nq:
+    hf_name: nq_open
+    split: validation
+  popqa:
+    hf_name: akariasai/PopQA
+    split: test
+retrievers:
+  bm25:
+    type: bm25
+  e5:
+    type: e5
+    model: intfloat/e5-large-v2
+models:
+  gemma:
+    hf_name: google/gemma-2-9b-it
+    max_k: 40
+    context_window: 8192
+    ks: [1, 5, 10, 20, 30, 40]
+  mistral:
+    hf_name: mistralai/Mistral-Nemo-Instruct-2407
+    max_k: 200
+    context_window: 32768
+    ks: [1, 5, 10, 20, 40, 80, 120, 160, 200]
+generation:
+  dtype: bfloat16
+  quantization_4bit: false
+  max_new_tokens: 32
+  batch_size: 4
+  backend: auto
+  mock_prediction: "mock answer"
+retrieval:
+  max_passages: 200
+  batch_size: 64
+  e5_device: cuda

@@ -1,0 +1,14 @@
+pyserini
+faiss-cpu
+sentence-transformers
+transformers
+datasets
+torch
+numpy
+pyyaml
+tqdm
+pandas
+matplotlib
+pytest
+# Optional high-throughput inference backend:
+# vllm
